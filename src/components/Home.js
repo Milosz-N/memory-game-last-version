@@ -138,6 +138,8 @@ const stopTimer = useCallback(() => {
               timeCounter={timeCounter}
               setTimeCounter={setTimeCounter}
               time={time}
+              setTime={setTime}
+              setSelectedImages={setSelectedImages}
             
             />
           

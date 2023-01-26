@@ -4,6 +4,7 @@ import "../components/scss/home.scss";
 import "../components/scss/input.scss";
 function Input({
   startGame,
+  setStartGame,
   selectedImages,
   finish,
   setFinish,
@@ -11,12 +12,13 @@ function Input({
   setCounter,
   timeCounter,
   setTimeCounter,
-  time
+  time,
+  setTime,
+  setSelectedImages
 }) {
   const [board, setBoard] = useState([]);
   const [clicked, setClicked] = useState([]);
   const [result, setResult] = useState([]);
-  const [dupa, setDupa] = useState(false);
   //  console.log(selectedImages.length / 2);
  useEffect(()=> {
   if(finish === true){
@@ -137,7 +139,19 @@ function Input({
       )
     );
   }
-
+function setNewgame(){
+  setStartGame(false);
+  setBoard([]);
+  setClicked([]);
+  setResult([]);
+  setFinish(false);
+  setTime(-3);
+  setTimeCounter(false);
+  setSelectedImages((
+    new Array(10).fill(false)
+  ))
+  
+}
   return (
     <>
       <div
@@ -153,7 +167,7 @@ function Input({
         <h2>koniec</h2>
         <h2>{time}</h2>
 
-           <label className="toogle-1" >
+           <label className="toogle-1" onClick={setNewgame} >
                 <input
                   type="checkbox"
                   id="toggle1"
