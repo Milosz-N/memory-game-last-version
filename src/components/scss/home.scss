@@ -1,0 +1,137 @@
+.inputContainer{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1300px;
+    justify-content: center;
+  margin: auto;
+  }
+  .inputImage{
+    width: 250px;
+    height: 250px;
+    background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 30px;
+  background-position: center;
+  margin: 10px;
+  background-color: #68aded;
+  }
+  @for $i from 1 through 10 {
+    .inputImage:nth-child(#{$i}){
+
+        @if $i % 4 == 0 {
+            animation: 1s ease-out  1 slideInFromTop ;
+
+          } @else if $i % 4 == 1  {
+            animation: 1s ease-out  1 slideInFromBottom ;
+
+          }
+         @else if $i % 4 == 2  {
+            animation: 1s ease-out  1 slideInFromLeft ;
+
+          }
+          @else {
+            animation: 1s ease-out  1 slideInFromLeft ;
+
+          }
+          
+
+    }
+  }
+
+@keyframes slideInFromRight {
+    from { transform: translateX(3000px); opacity: 0.5; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes slideInFromTop {
+    from { transform: translateY(-1000px); opacity: 0.5; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes slideInFromBottom {
+    from { transform: translateY(1000px); opacity: 0.5; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes slideInFromLeft {
+  from { transform: translateX(-1000px); opacity: 0.5; }
+  to { transform: translateX(0); opacity: 1; }
+  }
+
+
+
+  .bold{
+    background-color: #31e820 !important
+    }
+  
+
+
+  
+.toogle-1_input, .toogle-2_input{
+  display: none;
+}
+
+
+.toogle-2, .toogle-1{
+  display: flex;
+  margin: auto;
+  animation-delay: 2s;
+  animation: 1.5s ease-out  1 opacity;
+  width: 180px;
+  margin-top: 10px;
+
+}
+
+.toogle-1_button{
+  background-color: #00b3b4;
+  border: 1px solid #00b3b4;
+ 
+}
+.toogle-2_button{
+
+  background-color: #f2345a;
+  border: 1px solid #f2345a;
+  
+}
+.toogle-1_button, .toogle-2_button{
+  font-size: 1rem;
+  line-height: 20px;
+  border-radius: 10px;
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  color:white;
+  width: 180px;
+  height: 60px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+}
+
+.toogle-1_button::before{
+ 
+  content: 'Start game';
+  font-size: 18px;
+  color: #f2395a;
+left: 80px;
+background-color: white;
+}
+
+.toogle-2_button::before{
+  content: 'Choose pictrues';
+  background: white;
+  color: #00b3b4;
+  left: 10px;
+  font-size: 14px;
+}
+
+.toogle-1_button::before, .toogle-2_button::before{
+  position: absolute;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 0 3px;
+  top: 10px;
+  width: 80px;
+  font-weight: bold;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;  
+  transition: all 0.3s ease;
+
+}
