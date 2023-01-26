@@ -131,17 +131,16 @@ const stopTimer = useCallback(() => {
             {" "}
             <Input
               startGame={startGame}
+              setStartGame={setStartGame}
               selectedImages={shuffle(selectedImages)}
               finish={finish}
               setFinish={setFinish}
               timeCounter={timeCounter}
               setTimeCounter={setTimeCounter}
+              time={time}
             
             />
-            <h2>
-            Czas gry {Math.floor(time / 60)} :{" "}
-                {time - Math.floor(time / 60) * 60}
-            </h2>
+          
             
           </>
         )
@@ -150,6 +149,10 @@ const stopTimer = useCallback(() => {
       </>
       }
 </>} 
+{(startGame == true && finish == false && time > 0) && <>  <h2>
+            Czas gry {Math.floor(time / 60)} :{" "}
+                {time - Math.floor(time / 60) * 60}
+            </h2></> }
       </>
     </>
   );

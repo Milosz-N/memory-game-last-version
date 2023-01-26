@@ -10,7 +10,8 @@ function Input({
   counter,
   setCounter,
   timeCounter,
-  setTimeCounter
+  setTimeCounter,
+  time
 }) {
   const [board, setBoard] = useState([]);
   const [clicked, setClicked] = useState([]);
@@ -147,10 +148,24 @@ function Input({
         }}
       >
         {board}
-        <>{finish == true && <h2>koniec</h2>}</>
+        <>{finish == true && 
+        <div className="finishDiv">
+        <h2>koniec</h2>
+        <h2>{time}</h2>
+
+           <label className="toogle-1" >
+                <input
+                  type="checkbox"
+                  id="toggle1"
+                  className="toogle-1_input"
+                />
+                <span className="toogle-1_button"></span>
+              </label>
+
+       </div>
+        }</>
       </div>
       <>
-        <h2>{counter}</h2>
       </>
     </>
   );
