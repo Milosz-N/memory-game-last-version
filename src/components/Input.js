@@ -3,14 +3,10 @@ import "../App.css";
 import "../components/scss/home.scss";
 import "../components/scss/input.scss";
 function Input({
-  startGame,
   setStartGame,
   selectedImages,
   finish,
   setFinish,
-  counter,
-  setCounter,
-  timeCounter,
   setTimeCounter,
   time,
   setTime,
@@ -22,7 +18,6 @@ function Input({
   //  console.log(selectedImages.length / 2);
  useEffect(()=> {
   if(finish === true){
-    console.log('finish hest');
     setTimeCounter(false);
   }
   else{
@@ -63,23 +58,14 @@ function Input({
 
 
       if (clicked.length % 2 == 0) {
-        console.log("tutaj bede sprawdzal");
-        // console.log(clicked);
-        // console.log(Number.parseInt(clicked[clicked.length-1][1]) ==  Number.parseInt(clicked[clicked.length-2][1]));
         if (
           Number.parseInt(clicked[clicked.length - 1][1]) ==
           Number.parseInt(clicked[clicked.length - 2][1])
         ) {
-          console.log("trafilem");
-          // console.log(firstChecked);
-          // console.log(secondChecked);
           firstChecked[0].classList.add("checked");
           secondChecked[0].classList.add("checked");
           result.push(clicked[clicked.length - 1][1]);
-          console.log(Number.parseInt(result.length));
-          console.log(Number.parseInt(board.length)/2);
-          // console.log(board);
-          // console.log(checkedResult)
+        
           const checkedResult = document.querySelectorAll(
             `button`
           );
@@ -88,23 +74,15 @@ function Input({
           if (
             Number.parseInt(result.length * 2) === Number.parseInt(checkedResult.length)
           ) {
-            console.log("koniec gry");
-
             setFinish(true);
-            // setTimeCounter(false)
-
-            // return () => clearInterval(timer);
+         
           }
-          // a.disabled = 'false';
-          // b.disabled = 'false';
+       
         }
       } else {
-        console.log("tutaj bede zerowal");
         const thirdCheced = document.querySelectorAll(
           `button[id='${clicked[clicked.length - 3][0]}']`
         );
-        // console.log(secondChecked[0].classList.contains('checked'));
-        // console.log(thirdCheced[0].classList.contains('checked'));
         if (secondChecked[0].classList.contains("checked") == false) {
           secondChecked[0].disabled = false;
           secondChecked[0].children[0].classList.remove("card-animation");
@@ -122,7 +100,6 @@ function Input({
         "button",
         { className: "card-back", key: x, id: x, onClick: handleClick },
         [
-          // id diva to numer kontenera, id img to numer obrazka
           React.createElement("img", {
             className: "card",
             src: require(`../components/img/image-${
@@ -164,8 +141,8 @@ function setNewgame(){
         {board}
         <>{finish == true && 
         <div className="finishDiv">
-        <h2>koniec</h2>
-        <h2>{time}</h2>
+        <h2> Time: {Math.floor(time / 60)} :{" "}
+                {time - Math.floor(time / 60) * 60}</h2>
 
            <label className="toogle-1" onClick={setNewgame} >
                 <input

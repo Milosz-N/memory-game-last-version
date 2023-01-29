@@ -2,16 +2,12 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import Input from "./Input";
 import "../components/scss/fonts.scss";
 function Home() {
-  // var x = 0;
   const [startGame, setStartGame] = useState(false);
   const [finish, setFinish] = useState(false);
   const [timeCounter, setTimeCounter] = useState(false);
   const [time, setTime] = useState(-3);
   const intervalIDRef = useRef(null);
-
-  
   useEffect(() => {
-    // console.log(timeCounter)
     if(timeCounter == true){
       startTimer();
     }
@@ -67,7 +63,6 @@ const stopTimer = useCallback(() => {
       selectedImages.concat(selectedImages).flatMap((b, i) => (b ? i : []))
     );
     setSelectedImages(arr);
-    //tutaj podwoic tablice, zrobic flat jak w 63 i wymieszac, taka przekazac na Input
     setStartGame(true);
     setTimeCounter(true);
   };
@@ -97,7 +92,7 @@ const stopTimer = useCallback(() => {
                 }}
                 onClick={() => {
                   handleCheckboxChange(x);
-                }} //tu byl x++
+                }} 
               ></div>
             ))}
           </div>
@@ -130,12 +125,10 @@ const stopTimer = useCallback(() => {
           <>
             {" "}
             <Input
-              startGame={startGame}
               setStartGame={setStartGame}
               selectedImages={shuffle(selectedImages)}
               finish={finish}
               setFinish={setFinish}
-              timeCounter={timeCounter}
               setTimeCounter={setTimeCounter}
               time={time}
               setTime={setTime}
@@ -152,7 +145,7 @@ const stopTimer = useCallback(() => {
       }
 </>} 
 {(startGame == true && finish == false && time > 0) && <>  <h2>
-            Czas gry {Math.floor(time / 60)} :{" "}
+            Time: {Math.floor(time / 60)} :{" "}
                 {time - Math.floor(time / 60) * 60}
             </h2></> }
       </>
